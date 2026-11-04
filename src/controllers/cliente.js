@@ -26,8 +26,8 @@ class ControllerCliente {
     async Criar(req, res) {
         try {
             const nome = req.body.nome
-            const idade = req.body.idade
-            await ServiceCliente.Criar(nome, idade)
+            const email = req.body.email
+            await ServiceCliente.Criar(nome, email)
 
             res.send({ message: "Criado com sucesso!" })
         } catch (error) {

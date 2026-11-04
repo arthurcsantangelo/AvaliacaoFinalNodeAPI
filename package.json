@@ -2,24 +2,25 @@
   "name": "avaliacaofinalnodeapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "node --watch index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "homepage": "https://github.com/arthurcsantangelo/AvaliacaoFinalNodeAPI#readme",
+  "bugs": {
+    "url": "https://github.com/arthurcsantangelo/AvaliacaoFinalNodeAPI/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arthurcsantangelo/AvaliacaoFinalNodeAPI.git"
   },
-  "keywords": [],
-  "author": "Arthur Carlo Della Favera Santangelo",
   "license": "ISC",
+  "author": "Arthur Carlo Della Favera Santangelo",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/arthurcsantangelo/AvaliacaoFinalNodeAPI/issues"
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch index.js",
+    "test": "jest"
   },
-  "homepage": "https://github.com/arthurcsantangelo/AvaliacaoFinalNodeAPI#readme",
   "dependencies": {
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "pg": "^8.23.1",
+    "sequelize": "^6.37.8"
   }
 }
