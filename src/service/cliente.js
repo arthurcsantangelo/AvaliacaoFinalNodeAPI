@@ -27,7 +27,7 @@ class ServiceCliente {
             throw new Error("Favor informar todos os dados")
         }
         
-        const clienteAlterar = await Pessoa.findByPk(id)
+        const clienteAlterar = await Cliente.findByPk(id)
 
         if(!clienteAlterar) {
             throw new Error("Cliente não encontrada")
