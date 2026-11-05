@@ -14,12 +14,12 @@ class ServiceCliente {
         return Cliente.BuscarUm(id)
     }
     
-    async Criar(nome, idade) {
+    async Criar(nome) {
         if(!nome) {
             throw new Error("Favor informar o nome")
         }
         
-        await Cliente.create({ nome, idade })
+        await Cliente.create({ nome })
     }
     
     async Alterar(id, nome) {

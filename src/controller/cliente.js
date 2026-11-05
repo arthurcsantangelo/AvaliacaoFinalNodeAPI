@@ -27,7 +27,8 @@ class ControllerCliente {
         try {
             const nome = req.body.nome
             const email = req.body.email
-            await ServiceCliente.Criar(nome, email)
+            const senha = req.body.senha
+            await ServiceCliente.Criar(nome, email, senha)
 
             res.send({ message: "Criado com sucesso!" })
         } catch (error) {
@@ -39,7 +40,9 @@ class ControllerCliente {
         try {
             const id = req.params.id
             const nome = req.body.nome
-            ServiceCliente.Alterar(id, nome)
+            const email = req.body.email
+            const senha = req.body.senha
+            ServiceCliente.Alterar(id, nome, email, senha)
 
             res.send({ message: "Alterado com sucesso!" })
         } catch (error) {

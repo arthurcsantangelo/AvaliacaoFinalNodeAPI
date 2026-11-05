@@ -1,7 +1,7 @@
 
 import database from '../config/database.js';
  
-class Cliente {
+class Cliente{
   constructor() {
     this.model = database.db.define("cliente", {
       id: {
@@ -12,8 +12,11 @@ class Cliente {
       nome: {
         type: database.db.Sequelize.STRING
       },
-      idade: {
-        type: database.db.Sequelize.INTEGER
+      email: {
+        type: database.db.Sequelize.STRING
+      },
+      senha: {
+        type: database.db.Sequelize.STRING
       }
     })
   }
