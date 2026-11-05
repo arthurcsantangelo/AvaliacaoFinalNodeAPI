@@ -1,4 +1,5 @@
 import express from 'express'
+import router from './router/atendimento.js'
 import router from './src/router/cliente.js'
 import database from './src/config/database.js'       
 
