@@ -8,11 +8,20 @@ class Atendimento {
                 primaryKey: true,
                 autoIncrement: true
             },
-            marca: {
-                type: database.db.Sequelize.STRING,
+            dia: {
+                type: database.db.Sequelize.INTEGER,
             },
             ano: {
                 type: database.db.Sequelize.INTEGER,
+            },
+            valor: {
+                type: database.db.Sequelize.INTEGER,
+            },
+            hora: {
+                type: database.db.Sequelize.INTEGER,
+            },
+            concluido: {
+                type: database.db.Sequelize.STRING,
             }
         })
     }

@@ -29,9 +29,9 @@ class ControllerAtendimento {
 
     async Criar(req, res) {
         try {
-            const { marca, ano } = req.body
+            const { id, dia, hora, valor, concluído } = req.body
 
-            await ServiceAtendimento.Criar(marca, ano)
+            await ServiceAtendimento.Criar(id, dia, hora, valor, concluído)
             
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
@@ -43,10 +43,10 @@ class ControllerAtendimento {
 
     async Alterar(req, res) {
         try {
-            const { marca, ano } = req.body
+            const { dia, hora, valor, concluído } = req.body
             const id = req.params.id
 
-            await ServiceAtendimento.Alterar(id, marca, ano)
+            await ServiceAtendimento.Alterar(id, dia, hora, valor, concluído)
             
             res.status(201).send({ mensagem: "Cadastrado com sucesso" })
         } catch (error) {
