@@ -4,60 +4,55 @@ class ControllerCliente {
 
     async Buscar(req, res) {
         try {
-            const nomes = await ServiceCliente.Buscar()
-
-            res.send({ nomes })
-        } catch (e) {
-            res.send({ message: e.message })
+            const clientes = await ServiceCliente.Buscar()
+            res.status(200).send({ clientes })
+        } catch (error) {
+            res.status(500).send({ message: error.message })
         }
     }
 
-    BuscarUm(req, res) {
+    async BuscarUm(req, res) {
         try {
             const id = req.params.id
-            const nome = ServiceCliente.BuscarUm(id)
+            const cliente = await ServiceCliente.BuscarUm(id)
 
-            res.send({ nome })
+            res.status(200).send({ cliente })
         } catch (error) {
-            res.send({ message: error.message })
+            res.status(500).send({ message: error.message })
         }
     }
 
     async Criar(req, res) {
         try {
-            const nome = req.body.nome
-            const email = req.body.email
-            const senha = req.body.senha
+            const { nome, email, senha } = req.body
             await ServiceCliente.Criar(nome, email, senha)
 
-            res.send({ message: "Criado com sucesso!" })
+            res.status(201).send({ message: "Cliente criado com sucesso!" })
         } catch (error) {
-            res.send({ message: error.message })
+            res.status(500).send({ message: error.message })
         }
     }
     
-    Alterar(req, res) {
+    async Alterar(req, res) {
         try {
             const id = req.params.id
-            const nome = req.body.nome
-            const email = req.body.email
-            const senha = req.body.senha
-            ServiceCliente.Alterar(id, nome, email, senha)
+            const { nome, email, senha } = req.body
+            await ServiceCliente.Alterar(id, nome, email, senha)
 
-            res.send({ message: "Alterado com sucesso!" })
+            res.status(200).send({ message: "Cliente alterado com sucesso!" })
         } catch (error) {
-            res.send({ message: error.message })
+            res.status(500).send({ message: error.message })
         }
     }
     
-    Deletar(req, res) {
+    async Deletar(req, res) {
         try {
             const id = req.params.id
-            ServiceCliente.Deletar(id)
+            await ServiceCliente.Deletar(id)
             
-            res.send({ message: "Deletado com sucesso!" })
+            res.status(200).send({ message: "Cliente deletado com sucesso!" })
         } catch (error) {
-            res.send({ message: error.message })
+            res.status(500).send({ message: error.message })
         }
     }
 

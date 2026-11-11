@@ -4,8 +4,8 @@ class ControllerAtendimento {
     
     async Buscar(_, res) {
         try {
-            const carros = await ServiceAtendimento.Buscar()
-            res.status(200).send({ mensagem: carros })
+            const atendimentos = await ServiceAtendimento.Buscar()
+            res.status(200).send({ mensagem: atendimentos })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -16,10 +16,9 @@ class ControllerAtendimento {
     async Detalhe(req, res) {
         try {
             const id = req.params.id
+            const atendimento = await ServiceAtendimento.Detalhe(id)
 
-            const carro = await ServiceAtendimento.Detalhe(id)
-
-            res.status(200).send({ mensagem: carro })
+            res.status(200).send({ mensagem: atendimento })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -33,7 +32,7 @@ class ControllerAtendimento {
 
             await ServiceAtendimento.Criar(id, dia, hora, valor, concluído)
             
-            res.status(201).send({ mensagem: "Cadastrado com sucesso" })
+            res.status(201).send({ mensagem: "Atendimento cadastrado com sucesso!" })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -48,7 +47,7 @@ class ControllerAtendimento {
 
             await ServiceAtendimento.Alterar(id, dia, hora, valor, concluído)
             
-            res.status(201).send({ mensagem: "Cadastrado com sucesso" })
+            res.status(200).send({ mensagem: "Atendimento alterado com sucesso!" })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
@@ -62,7 +61,7 @@ class ControllerAtendimento {
 
             await ServiceAtendimento.Deletar(identificador)
 
-            res.status(204).send({ mensagem: "Deletado" })
+            res.status(200).send({ mensagem: "Atendimento deletado com sucesso!" })
         } catch (error) {
             res.status(500).send({
                 mensagem: error.message
