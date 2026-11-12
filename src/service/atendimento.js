@@ -14,26 +14,27 @@ class ServiceAtendimento {
         return Atendimento.findByPk(id)
     }
     
-    async Criar(nome) {
-        if(!nome) {
-            throw new Error("Favor informar o nome")
+    async Criar(dia, hora, valor, concluido) {
+        if(!dia || !hora || !valor || !concluido ) {
+            throw new Error("Favor informar os dados")
         }
         
-        await Atendimento.create({ nome })
+        await Atendimento.create({ dia, hora, valor, concluido })
     }
     
-    async Alterar(id, nome) {
+    async Alterar(id, dia, hora, valor, concluido) {
         if(!id || isNaN(id) || !nome) {
             throw new Error("Favor informar todos os dados")
         }
-        
         const atendimentoAlterar = await Atendimento.findByPk(id)
-
         if(!atendimentoAlterar) {
             throw new Error("Atendimento não encontrada")
         }
 
-        atendimentoAlterar.nome = nome
+        atendimentoAlterar.dia = dia
+        atendimentoAlterar.valor = valor
+        atendimentoAlterar.hora = hora
+        atendimentoAlterar.concluido = concluido
 
         await atendimentoAlterar.save()
     }

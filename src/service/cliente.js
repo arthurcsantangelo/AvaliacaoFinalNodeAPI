@@ -14,17 +14,17 @@ class ServiceCliente {
         return Cliente.findByPk(id)
     }
     
-    async Criar(nome) {
-        if(!nome) {
-            throw new Error("Favor informar o nome")
+    async Criar(nome, email, senha) {
+        if(!nome || !email || !senha ) {
+            throw new Error("Favor informar o nome, email ou senha")
         }
         
-        await Cliente.create({ nome })
+        await Cliente.create({ nome, email, senha })
     }
     
-    async Alterar(id, nome) {
-        if(!id || isNaN(id) || !nome) {
-            throw new Error("Favor informar todos os dados")
+    async Alterar(id, nome, email, senha) {
+         if (!id) {
+            throw new Error("Favor informar os dados");
         }
         
         const clienteAlterar = await Cliente.findByPk(id)
@@ -34,6 +34,8 @@ class ServiceCliente {
         }
 
         clienteAlterar.nome = nome
+        clienteAlterar.email = email
+        clienteAlterar.senha = senha
 
         await clienteAlterar.save()
     }

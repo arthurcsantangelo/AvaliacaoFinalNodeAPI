@@ -13,16 +13,14 @@ class ControllerAtendimento {
         }
     }
 
-    async Detalhe(req, res) {
-        try {
+    async BuscarUm(req, res) {
+         try {
             const id = req.params.id
-            const atendimento = await ServiceAtendimento.Detalhe(id)
+            const nome = ServiceCliente.BuscarUm(id)
 
-            res.status(200).send({ mensagem: atendimento })
+            res.send({ nome })
         } catch (error) {
-            res.status(500).send({
-                mensagem: error.message
-            })
+            res.send({ message: error.message })
         }
     }
 
