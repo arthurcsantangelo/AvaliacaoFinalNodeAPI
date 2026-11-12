@@ -11,9 +11,6 @@ class Atendimento {
             dia: {
                 type: database.db.Sequelize.INTEGER,
             },
-            ano: {
-                type: database.db.Sequelize.INTEGER,
-            },
             valor: {
                 type: database.db.Sequelize.INTEGER,
             },
